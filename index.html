@@ -1,25 +1,39 @@
 <!DOCTYPE html>
 <html lang="sv">
 <head>
-  <meta charset="UTF-8">
-  <title>Spelliste-App</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spellistor</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+
 </head>
 <body>
-  <h1>Spelliste-App</h1>
+  
+    <h1>Min Spellista</h1>
+    
+    <div id="playlist-form">
+        <input type="text" id="playlist-name" placeholder="Namn på spellista">
+        <button id="create-btn">Skapa spellista</button>
+    </div>
+    
+    <div id="playlist-view">
+        <h2>Mina spellistor</h2>
+        <div id="playlist-list"></div>
+    </div>
+    
+    <div id="playlist-detail-view" class="hidden">
+        <button id="back-btn" class="back-btn">Tillbaka</button>
+        <h2 id="detail-playlist-name"></h2>
+        <div id="song-list"></div>
+        
+        <div id="add-song-form" style="margin-top: 20px;">
+            <input type="text" id="song-name" placeholder="Låtnamn">
+            <input type="text" id="song-artist" placeholder="Artist">
+            <button id="add-song-btn" class="add-song-btn">Lägg till låt</button>
+        </div>
+    </div>
 
-  <div class="form-container">
-    <input type="text" id="genre" placeholder="Genre">
-    <input type="text" id="artist" placeholder="Artist">
-    <input type="text" id="låtar" placeholder="Låtar (kommaseparerade)">
-    <button onclick="läggTillSpellista()">Lägg till spellista</button>
-  </div>
-
-  <div class="list-container">
-    <h2>Spellistor</h2>
-    <ul id="list"></ul>
-  </div>
-
-  <script src="script.js"></script>
+   
 </body>
 </html>
