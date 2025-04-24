@@ -8,14 +8,13 @@ function läggTillSpellista() {
 
   const låtar = låtarInput.split(",").map((titel) => ({
     titel: titel.trim(),
-    länk: "#" // Lägg riktiga länkar om du vill
+ 
   }));
 
   const ny = { genre, artist, låtar };
   spellistor.push(ny);
   renderSpellistor();
 
-  // Rensa formuläret
   document.getElementById("genre").value = "";
   document.getElementById("artist").value = "";
   document.getElementById("låtar").value = "";
