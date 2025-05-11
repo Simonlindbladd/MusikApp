@@ -1,0 +1,22 @@
+const availableSongs = [
+  { name: "I Like The Way You Kiss Me", artist: "Artemas", genre: "Pop" },
+  { name: "Flowers", artist: "Miley Cyrus", genre: "Pop" },
+  { name: "Houdini", artist: "Eminem", genre: "Hip Hop" },
+  { name: "Lovin On Me", artist: "Jack Harlow", genre: "Hip Hop" },
+  { name: "Beautiful Things", artist: "Benson Boone", genre: "Pop" },
+  { name: "Gata Only", artist: "FloyyMenor", genre: "Reggaeton" },
+  { name: "Danza Kuduro", artist: "Don Omar", genre: "Reggaeton" },
+  { name: "BAND4BAND", artist: "Central Cee", genre: "Hip Hop" },
+  { name: "I Had Some Help", artist: "Post Malone", genre: "Country Pop" },
+  { name: "The Door", artist: "Teddy Swims", genre: "Soul" },
+  { name: "LUNCH", artist: "Billie Eilish", genre: "Pop" },
+  { name: "Like That", artist: "Future", genre: "Hip Hop" },
+  { name: "Bathroom Floor", artist: "Kids With Buns", genre: "Indie Pop" },
+  { name: "L'AMOUR DE MA VIE", artist: "Billie Eilish", genre: "Pop" },
+  { name: "Thinkin' Bout Me", artist: "Morgan Wallen", genre: "Country" },
+  { name: "Madonna", artist: "Natanael Cano", genre: "Regional Mexican" },
+  { name: "Deja Vu", artist: "Olivia Rodrigo", genre: "Pop" },
+  { name: "6 A.M.", artist: "Azul", genre: "Electronic" },
+  { name: "CONTIGO", artist: "KAROL G", genre: "Reggaeton" },
+  { name: "Sequência da", artist: "TRASHXRL", genre: "Hip Hop" }
+];

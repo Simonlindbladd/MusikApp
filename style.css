@@ -1,39 +1,57 @@
 body {
-    background-color: #1e1e1e;
-    color: #f0f0f0;
-    font-family: Arial, sans-serif;
-    padding: 2rem;
-  }
-  
-  h1, h2 {
-    color: #fff;
-  }
-  
-  .form-container input,
-  .form-container button {
-    margin: 0.5rem;
-    padding: 0.5rem;
-    border: none;
-    border-radius: 5px;
-  }
-  
-  .form-container input {
-    width: 200px;
-  }
-  
-  .form-container button {
-    background-color: #3a3a3a;
-    color: white;
-    cursor: pointer;
-  }
-  
-  .list-container ul {
-    list-style: none;
-    padding-left: 0;
-  }
-  
-  .list-container a {
-    color: #4da6ff;
-    text-decoration: none;
-  }
-  
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  background-color: #f4f4f4;
+}
+
+h1, h2 {
+  color: #333;
+}
+
+#playlist-view, #available-songs-view, #playlist-detail-view {
+  margin-bottom: 20px;
+}
+
+.hidden {
+  display: none;
+}
+
+input[type="text"] {
+  padding: 10px;
+  width: 100%;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+}
+
+button {
+  padding: 10px 15px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+#playlist-list, #available-songs-list, #song-list {
+  margin-top: 10px;
+}
+
+.song {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  margin-bottom: 5px;
+}
+
+button.delete-btn {
+  background-color: #f44336;
+}
+
+button.delete-btn:hover {
+  background-color: #e53935;
+}
