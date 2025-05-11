@@ -2,24 +2,30 @@
 <html lang="sv">
 <head>
   <meta charset="UTF-8">
-  <title>Spelliste-App</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Music Playlist</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>Spelliste-App</h1>
-
-  <div class="form-container">
-    <input type="text" id="genre" placeholder="Genre">
-    <input type="text" id="artist" placeholder="Artist">
-    <input type="text" id="låtar" placeholder="Låtar (kommaseparerade)">
-    <button onclick="läggTillSpellista()">Lägg till spellista</button>
+  <div id="playlist-view">
+    <h1>Spellistor</h1>
+    <input type="text" id="playlist-name" placeholder="Namn på ny spellista">
+    <button id="create-btn">Skapa spellista</button>
+    <div id="playlist-list"></div>
   </div>
 
-  <div class="list-container">
-    <h2>Spellistor</h2>
-    <ul id="list"></ul>
+  <div id="available-songs-view">
+    <h2>Tillgängliga låtar</h2>
+    <div id="available-songs-list"></div>
   </div>
 
+  <div id="playlist-detail-view" class="hidden">
+    <button id="back-btn">Tillbaka</button>
+    <h2 id="detail-playlist-name"></h2>
+    <div id="song-list"></div>
+  </div>
+
+  <script src="songs.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
