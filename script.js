@@ -21,8 +21,9 @@ document.addEventListener("DOMContentLoaded", () => {
         <span>${song.name} - ${song.artist} (${song.genre})</span>
         <button class="add-btn" data-index="${index}">Lägg till</button>
       `;
-      div.querySelector('button').addEventListener('click', () => {
-        addSongToPlaylist(index);
+      const button = div.querySelector('button');
+      button.addEventListener('click', () => {
+        addSongToPlaylist(index, button);
       });
       availableSongsList.appendChild(div);
     });
@@ -73,20 +74,32 @@ document.addEventListener("DOMContentLoaded", () => {
         const genreDiv = document.createElement('div');
         genreDiv.className = 'genre-group';
         const genreTitle = document.createElement('h3');
-        genreTitle.textContent = `🎵 Genre: ${genre}`;
+        genreTitle.textContent = `Genre: ${genre}`;
         genreDiv.appendChild(genreTitle);
 
         for (const artist in grouped[genre]) {
           const artistDiv = document.createElement('div');
           artistDiv.className = 'artist-group';
           const artistTitle = document.createElement('h4');
-          artistTitle.textContent = `🎤 Artist: ${artist}`;
+          artistTitle.textContent = ` Artist: ${artist}`;
           artistDiv.appendChild(artistTitle);
 
           grouped[genre][artist].forEach(songName => {
             const songDiv = document.createElement('div');
             songDiv.className = 'song';
-            songDiv.textContent = songName;
+
+            const nameSpan = document.createElement('span');
+            nameSpan.textContent = songName;
+
+            const deleteBtn = document.createElement('button');
+            deleteBtn.className = 'delete-btn';
+            deleteBtn.textContent = 'Ta bort';
+            deleteBtn.addEventListener('click', () => {
+              deleteSongFromPlaylist(songName, artist, genre);
+            });
+
+            songDiv.appendChild(nameSpan);
+            songDiv.appendChild(deleteBtn);
             artistDiv.appendChild(songDiv);
           });
 
@@ -99,6 +112,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
     playlistView.classList.add('hidden');
     playlistDetailView.classList.remove('hidden');
+  }
+
+  function deleteSongFromPlaylist(songName, artist, genre) {
+    if (!currentPlaylist) return;
+
+    currentPlaylist.songs = currentPlaylist.songs.filter(song => {
+      return !(song.name === songName && song.artist === artist && song.genre === genre);
+    });
+
+    savePlaylists();
+    showPlaylistDetail(currentPlaylist.id);
   }
 
   backBtn.addEventListener('click', () => {
@@ -120,16 +144,36 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  function addSongToPlaylist(index) {
+  function addSongToPlaylist(index, buttonElement) {
     if (currentPlaylist) {
       const song = availableSongs[index];
+
+      const alreadyAdded = currentPlaylist.songs.some(
+        s => s.name === song.name && s.artist === song.artist && s.genre === song.genre
+      );
+
+      if (alreadyAdded) {
+        alert('Denna låt finns redan i spellistan!');
+        return;
+      }
+
       currentPlaylist.songs.push({
         name: song.name,
         artist: song.artist,
         genre: song.genre
       });
+
       savePlaylists();
       showPlaylistDetail(currentPlaylist.id);
+
+      if (buttonElement) {
+        buttonElement.classList.add('added');
+        buttonElement.textContent = 'Tillagd!';
+        setTimeout(() => {
+          buttonElement.classList.remove('added');
+          buttonElement.textContent = 'Lägg till';
+        }, 1500);
+      }
     } else {
       alert('Välj en spellista först!');
     }
