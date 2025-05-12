@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
         <span>${song.name} - ${song.artist} (${song.genre})</span>
         <button class="add-btn" data-index="${index}">Lägg till</button>
       `;
-      div.querySelector('button').addEventListener('click', (e) => {
+      div.querySelector('button').addEventListener('click', () => {
         addSongToPlaylist(index);
       });
       availableSongsList.appendChild(div);
@@ -57,23 +57,46 @@ document.addEventListener("DOMContentLoaded", () => {
     currentPlaylist = playlists.find(p => p.id === id);
     detailPlaylistName.textContent = currentPlaylist.name;
     songList.innerHTML = '';
+
     if (currentPlaylist.songs.length === 0) {
       songList.innerHTML = '<p>Inga låtar i denna spellista</p>';
     } else {
-      currentPlaylist.songs.forEach((song, index) => {
-        const songDiv = document.createElement('div');
-        songDiv.className = 'song';
-        songDiv.innerHTML = `
-          <span>${song.name} - ${song.artist}</span>
-          <button class="delete-btn" data-index="${index}">Ta bort</button>
-        `;
-        songDiv.querySelector('button').addEventListener('click', (e) => {
-          e.stopPropagation();
-          deleteSong(index);
-        });
-        songList.appendChild(songDiv);
+      const grouped = {};
+
+      currentPlaylist.songs.forEach(song => {
+        if (!grouped[song.genre]) grouped[song.genre] = {};
+        if (!grouped[song.genre][song.artist]) grouped[song.genre][song.artist] = [];
+        grouped[song.genre][song.artist].push(song.name);
       });
+
+      for (const genre in grouped) {
+        const genreDiv = document.createElement('div');
+        genreDiv.className = 'genre-group';
+        const genreTitle = document.createElement('h3');
+        genreTitle.textContent = `🎵 Genre: ${genre}`;
+        genreDiv.appendChild(genreTitle);
+
+        for (const artist in grouped[genre]) {
+          const artistDiv = document.createElement('div');
+          artistDiv.className = 'artist-group';
+          const artistTitle = document.createElement('h4');
+          artistTitle.textContent = `🎤 Artist: ${artist}`;
+          artistDiv.appendChild(artistTitle);
+
+          grouped[genre][artist].forEach(songName => {
+            const songDiv = document.createElement('div');
+            songDiv.className = 'song';
+            songDiv.textContent = songName;
+            artistDiv.appendChild(songDiv);
+          });
+
+          genreDiv.appendChild(artistDiv);
+        }
+
+        songList.appendChild(genreDiv);
+      }
     }
+
     playlistView.classList.add('hidden');
     playlistDetailView.classList.remove('hidden');
   }
@@ -100,18 +123,16 @@ document.addEventListener("DOMContentLoaded", () => {
   function addSongToPlaylist(index) {
     if (currentPlaylist) {
       const song = availableSongs[index];
-      currentPlaylist.songs.push({ name: song.name, artist: song.artist });
+      currentPlaylist.songs.push({
+        name: song.name,
+        artist: song.artist,
+        genre: song.genre
+      });
       savePlaylists();
       showPlaylistDetail(currentPlaylist.id);
     } else {
       alert('Välj en spellista först!');
     }
-  }
-
-  function deleteSong(index) {
-    currentPlaylist.songs.splice(index, 1);
-    savePlaylists();
-    showPlaylistDetail(currentPlaylist.id);
   }
 
   createBtn.addEventListener('click', () => {
