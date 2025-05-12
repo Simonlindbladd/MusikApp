@@ -1,31 +1,33 @@
 <!DOCTYPE html>
 <html lang="sv">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Music Playlist</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Min spellista</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <h1>🎶 Min spellista</h1>
+
   <div id="playlist-view">
-    <h1>Spellistor</h1>
-    <input type="text" id="playlist-name" placeholder="Namn på ny spellista">
+    <h2>Skapa din spellista</h2>
+    <input type="text" id="playlist-name" placeholder="Namn på spellista" />
     <button id="create-btn">Skapa spellista</button>
+
+    <h2>Dina spellistor</h2>
     <div id="playlist-list"></div>
   </div>
 
-  <div id="available-songs-view">
-    <h2>Tillgängliga låtar</h2>
+  <div id="playlist-detail-view" class="hidden">
+    <button id="back-btn">⬅ Tillbaka</button>
+    <h2 id="detail-playlist-name"></h2>
+    <div id="song-list"></div>
+
+    <h3>Lägg till låtar</h3>
     <div id="available-songs-list"></div>
   </div>
 
-  <div id="playlist-detail-view" class="hidden">
-    <button id="back-btn">Tillbaka</button>
-    <h2 id="detail-playlist-name"></h2>
-    <div id="song-list"></div>
-  </div>
-
-  <script src="songs.js"></script>
   <script src="script.js"></script>
+  <script src="songs.js"></script>
 </body>
 </html>
