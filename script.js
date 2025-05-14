@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
       nameSpan.textContent = `${playlist.name} (${playlist.songs.length} låtar)`;
       const deleteBtn = document.createElement('button');
       deleteBtn.className = 'delete-btn';
-      deleteBtn.textContent = 'Ta bort';
+      deleteBtn.textContent = '🗑️';
       deleteBtn.onclick = (e) => {
         e.stopPropagation();
         deletePlaylist(playlist.id);
