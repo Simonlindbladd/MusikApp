@@ -28,6 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
       availableSongsList.appendChild(div);
     });
   }
+  
 
   function showPlaylists() {
     playlistList.innerHTML = '';
@@ -53,6 +54,7 @@ document.addEventListener("DOMContentLoaded", () => {
       playlistList.appendChild(div);
     });
   }
+  
 
   function showPlaylistDetail(id) {
     currentPlaylist = playlists.find(p => p.id === id);
