@@ -28,6 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
       availableSongsList.appendChild(div);
     });
   }
+  
 
   function showPlaylists() {
     playlistList.innerHTML = '';
