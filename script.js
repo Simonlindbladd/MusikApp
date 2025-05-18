@@ -54,6 +54,7 @@ document.addEventListener("DOMContentLoaded", () => {
       playlistList.appendChild(div);
     });
   }
+  
 
   function showPlaylistDetail(id) {
     currentPlaylist = playlists.find(p => p.id === id);
